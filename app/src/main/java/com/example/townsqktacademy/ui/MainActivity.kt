@@ -1,7 +1,8 @@
-package com.example.townsqktacademy
+package com.example.townsqktacademy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.townsqktacademy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

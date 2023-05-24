@@ -1,10 +1,12 @@
-package com.example.townsqktacademy.home
+package com.example.townsqktacademy.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import com.example.townsqktacademy.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +24,8 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var goto: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +39,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        goto = view.findViewById(R.id.next)
+
+        goto?.setOnClickListener {
+            gotoOnClick()
+        }
+
+        return view
+    }
+
+    private fun gotoOnClick() {
+        findNavController().navigate(R.id.action_HomeFragment_to_DetailsFragment)
     }
 
     companion object {
