@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.townsqktacademy.R
-import com.example.townsqktacademy.data.Unit
+import com.example.townsqktacademy.data.CondoUnit
 
-class UnitAdapter(private var _dataList: MutableList<Unit>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>(){
+class UnitAdapter(private var _dataList: MutableList<CondoUnit>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.unit_card, parent, false)
         return UnitViewHolder(view)
@@ -24,18 +24,18 @@ class UnitAdapter(private var _dataList: MutableList<Unit>) : RecyclerView.Adapt
 
     inner class UnitViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-        private var unit: Unit? = null
+        private var condoUnit: CondoUnit? = null
 
         private val titleTextView: TextView = view.findViewById(R.id.titleTextView)
         private val descriptionTextView: TextView = view.findViewById(R.id.descriptionTextView)
         private val unitImageView: ImageView = view.findViewById(R.id.unitImageView)
 
-        fun bind(unit: Unit) {
-            this.unit = unit
+        fun bind(condoUnit: CondoUnit) {
+            this.condoUnit = condoUnit
 
-            titleTextView.text = unit.title
-            descriptionTextView.text = unit.description
-            unitImageView.load(unit.imageSource)
+            titleTextView.text = condoUnit.title
+            descriptionTextView.text = condoUnit.description
+            unitImageView.load(condoUnit.imageSource)
         }
 
     }

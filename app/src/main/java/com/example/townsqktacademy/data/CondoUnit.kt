@@ -1,6 +1,6 @@
 package com.example.townsqktacademy.data
 
-data class Unit(
+data class CondoUnit(
     val id: String,
     val title: String,
     val description: String,

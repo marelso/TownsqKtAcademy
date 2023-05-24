@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.townsqktacademy.R
-import com.example.townsqktacademy.data.Unit
+import com.example.townsqktacademy.data.CondoUnit
 import com.example.townsqktacademy.ui.components.UnitAdapter
 
 // TODO: Rename parameter arguments, choose names that match
@@ -68,39 +67,39 @@ class HomeFragment : Fragment() {
         units?.adapter = UnitAdapter(populateCards())
     }
 
-    private fun populateCards(): MutableList<Unit> {
+    private fun populateCards(): MutableList<CondoUnit> {
         return mutableListOf(
-            Unit(id = "DASGYDDHSAYGFSAGY"
+            CondoUnit(id = "DASGYDDHSAYGFSAGY"
                 , title = "First Unit"
                 , description = "This is the first unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "FASASFASDASDSAD"
+            CondoUnit(id = "FASASFASDASDSAD"
                 , title = "Second Unit"
                 , description = "This is the second unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "QRWEQWFASFDASDFSA"
+            CondoUnit(id = "QRWEQWFASFDASDFSA"
                 , title = "Third Unit"
                 , description = "This is the third unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "QWRASFAGDSGAFASF"
+            CondoUnit(id = "QWRASFAGDSGAFASF"
                 , title = "Fourth Unit"
                 , description = "This is the fourth unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "GDAGDSFASFDASFAS"
+            CondoUnit(id = "GDAGDSFASFDASFAS"
                 , title = "Fifty Unit"
                 , description = "This is the fifty unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "AGDAGDAGASDASFWQEQWE"
+            CondoUnit(id = "AGDAGDAGASDASFWQEQWE"
                 , title = "Sixty Unit"
                 , description = "This is the sixty unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
             ),
-            Unit(id = "TQERQWRFTGASGFASFD"
+            CondoUnit(id = "TQERQWRFTGASGFASFD"
                 , title = "Seventy unit"
                 , description = "This is the seventy unit card"
                 , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
