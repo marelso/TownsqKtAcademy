@@ -10,17 +10,7 @@ import coil.load
 import com.example.townsqktacademy.R
 import com.example.townsqktacademy.data.Unit
 
-class UnitAdapter() : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>(){
-
-    private var _dataList: MutableList<Unit> = mutableListOf()
-
-    var dataList: List<Unit> = _dataList.toList()
-
-    fun setData(units: List<Unit>) {
-        this._dataList = units.toMutableList()
-        notifyDataSetChanged()
-    }
-
+class UnitAdapter(private var _dataList: MutableList<Unit>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.unit_card, parent, false)
         return UnitViewHolder(view)
@@ -30,7 +20,7 @@ class UnitAdapter() : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>(){
         holder.bind(_dataList[position])
     }
 
-    override fun getItemCount(): Int = dataList.size
+    override fun getItemCount(): Int = _dataList.size
 
     inner class UnitViewHolder(view: View) : RecyclerView.ViewHolder(view){
 

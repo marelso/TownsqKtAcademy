@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.townsqktacademy.R
+import com.example.townsqktacademy.data.Unit
+import com.example.townsqktacademy.ui.components.UnitAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +31,13 @@ class HomeFragment : Fragment() {
 
     private var goto: Button? = null
 
+    private var units: RecyclerView? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,13 +53,59 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        goto = view.findViewById(R.id.next)
+        return view
+    }
 
+    private fun setupViews() {
+        goto = view?.findViewById(R.id.next)
         goto?.setOnClickListener {
             gotoOnClick()
         }
 
-        return view
+        units = view?.findViewById(R.id.units)
+
+        units?.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+        units?.adapter = UnitAdapter(populateCards())
+    }
+
+    private fun populateCards(): MutableList<Unit> {
+        return mutableListOf(
+            Unit(id = "DASGYDDHSAYGFSAGY"
+                , title = "First Unit"
+                , description = "This is the first unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "FASASFASDASDSAD"
+                , title = "Second Unit"
+                , description = "This is the second unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "QRWEQWFASFDASDFSA"
+                , title = "Third Unit"
+                , description = "This is the third unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "QWRASFAGDSGAFASF"
+                , title = "Fourth Unit"
+                , description = "This is the fourth unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "GDAGDSFASFDASFAS"
+                , title = "Fifty Unit"
+                , description = "This is the fifty unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "AGDAGDAGASDASFWQEQWE"
+                , title = "Sixty Unit"
+                , description = "This is the sixty unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            Unit(id = "TQERQWRFTGASGFASFD"
+                , title = "Seventy unit"
+                , description = "This is the seventy unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+        )
     }
 
     private fun gotoOnClick() {
