@@ -7,7 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.townsqktacademy.R
+import com.example.townsqktacademy.data.CondoUnit
+import com.example.townsqktacademy.ui.components.UnitAdapter
+import com.example.townsqktacademy.ui.details.DetailsFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +29,15 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private var goto: Button? = null
+    private var units: RecyclerView? = null
+    private var unitAdapter: UnitAdapter = UnitAdapter { condoUnit ->
+        onUnitClick(condoUnit)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,17 +54,66 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        goto = view.findViewById(R.id.next)
-
-        goto?.setOnClickListener {
-            gotoOnClick()
-        }
-
         return view
     }
 
+    private fun setupViews() {
+        unitAdapter.setData(populateCards())
+        units = view?.findViewById(R.id.units)
+        units?.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+        units?.adapter = unitAdapter
+    }
+
+    private fun onUnitClick(condoUnit: CondoUnit) {
+        val param1 = "value1"
+        val param2 = "value2"
+
+        val destinationFragment = DetailsFragment.newInstance(param1, param2)
+
+        findNavController().navigate(R.id.action_HomeFragment_to_DetailsFragment, destinationFragment.arguments)
+    }
+
+    private fun populateCards(): MutableList<CondoUnit> {
+        return mutableListOf(
+            CondoUnit(id = "DASGYDDHSAYGFSAGY"
+                , title = "First Unit"
+                , description = "This is the first unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "FASASFASDASDSAD"
+                , title = "Second Unit"
+                , description = "This is the second unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "QRWEQWFASFDASDFSA"
+                , title = "Third Unit"
+                , description = "This is the third unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "QWRASFAGDSGAFASF"
+                , title = "Fourth Unit"
+                , description = "This is the fourth unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "GDAGDSFASFDASFAS"
+                , title = "Fifty Unit"
+                , description = "This is the fifty unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "AGDAGDAGASDASFWQEQWE"
+                , title = "Sixty Unit"
+                , description = "This is the sixty unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+            CondoUnit(id = "TQERQWRFTGASGFASFD"
+                , title = "Seventy unit"
+                , description = "This is the seventy unit card"
+                , imageSource = "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/11/minecraft-houses.jpg"
+            ),
+        )
+    }
+
     private fun gotoOnClick() {
-        findNavController().navigate(R.id.action_HomeFragment_to_DetailsFragment)
     }
 
     companion object {
