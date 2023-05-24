@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.townsqktacademy.R
 import com.example.townsqktacademy.data.CondoUnit
 import com.example.townsqktacademy.ui.components.UnitAdapter
+import com.example.townsqktacademy.ui.details.DetailsFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,9 +29,10 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private var goto: Button? = null
-
     private var units: RecyclerView? = null
+    private var unitAdapter: UnitAdapter = UnitAdapter { condoUnit ->
+        onUnitClick(condoUnit)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,15 +58,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViews() {
-        goto = view?.findViewById(R.id.next)
-        goto?.setOnClickListener {
-            gotoOnClick()
-        }
-
+        unitAdapter.setData(populateCards())
         units = view?.findViewById(R.id.units)
-
         units?.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
-        units?.adapter = UnitAdapter(populateCards())
+        units?.adapter = unitAdapter
+    }
+
+    private fun onUnitClick(condoUnit: CondoUnit) {
+        val param1 = "value1"
+        val param2 = "value2"
+
+        val destinationFragment = DetailsFragment.newInstance(param1, param2)
+
+        findNavController().navigate(R.id.action_HomeFragment_to_DetailsFragment, destinationFragment.arguments)
     }
 
     private fun populateCards(): MutableList<CondoUnit> {
@@ -108,7 +114,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun gotoOnClick() {
-        findNavController().navigate(R.id.action_HomeFragment_to_DetailsFragment)
     }
 
     companion object {
