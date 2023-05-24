@@ -2,6 +2,29 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Home"
     android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/Home"
+        android:name="com.example.townsqktacademy.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_DetailsFragment"
+            app:destination="@id/Details" />
+    </fragment>
+    <fragment
+        android:id="@+id/Details"
+        android:name="com.example.townsqktacademy.details.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
+
+        <action
+            android:id="@+id/action_DetailsFragment_to_HomeFragment"
+            app:destination="@id/Home" />
+    </fragment>
 
 </navigation>
